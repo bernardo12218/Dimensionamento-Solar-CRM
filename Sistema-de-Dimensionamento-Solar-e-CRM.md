@@ -6,7 +6,7 @@
 
 |  Data  | Versão | Descrição | Autores |
 |:-------|:-------|:----------|:------|
-| 28/01/2025 |  **`1.00`** | Versão Inicial  | [Asaph Arruda](h[ttps://github.com/bernardommedeiros](https://github.com/ArrudaAsaph)) e [Bernardo Moura](https://github.com/bernardommedeiros) |
+| 28/01/2025 |  **`1.00`** | Versão Inicial  | [Asaph Arruda](https://github.com/ArrudaAsaph) e [Bernardo Moura](https://github.com/bernardommedeiros) |
 
 ### 1. Objetivo do Projeto
 
