@@ -60,7 +60,7 @@ O sistema é uma aplicação integrada de CRM e dimensionamento solar. Ele permi
 | RF02 | Atualização de Status | Consultores atualizam o status dos clientes ao longo do processo de vendas |
 | RF03 | Cálculo de Dimensionamento Solar | Sistema realiza o dimensionamento de sistemas fotovoltaicos com base no consumo mensal informado |
 | RF04 | Relatório de Impacto Financeiro | Gera relatório sobre a economia esperada para o cliente após a instalação do sistema |
-| RF05 | Consulta do Cliente | Cliente pode acompanhar o andamento do seu processo e visualizar resultados de cálculos |
+
 
 ### 9. Requisitos Não-funcionais
 
