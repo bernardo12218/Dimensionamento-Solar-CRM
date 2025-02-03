@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "tipo": "M\u00f3dulos",
+        "valor": 1600.5,
+        "estoque": 10,
+        "marca": "JA SOLAR",
+        "potencia": 550
+    },
+    {
+        "id": 2,
+        "tipo": "M\u00f3dulos",
+        "valor": 1600.5,
+        "estoque": 10,
+        "marca": "JA SOLAR",
+        "potencia": 550
+    },
+    {
+        "id": 3,
+        "tipo": "M\u00f3dulos",
+        "valor": 1600.5,
+        "estoque": 10,
+        "marca": "TRINA",
+        "potencia": 650
+    }
+]
