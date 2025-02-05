@@ -1,5 +1,5 @@
-from class_ModeloJSON import ModeloJSON
-import json
+from class_ModeloJSON import ModeloJSON, json
+
 
 class Produto:
     def __init__(self, id, tipo, valor, estoque, marca, potencia):
@@ -100,8 +100,6 @@ class Produtos(ModeloJSON):
 
     @classmethod
     def inserir(cls, produto):
-        if not isinstance(produto, Produto):
-            raise TypeError("O objeto precisa ser uma instância de Produto")
         super().inserir(produto)
 
     @classmethod
@@ -114,19 +112,14 @@ class Produtos(ModeloJSON):
 
     @classmethod
     def atualizar(cls, produto):
-        if not isinstance(produto, Produto):
-            raise TypeError("O objeto precisa ser uma instância de Produto")
         super().atualizar(produto)
 
     @classmethod
     def excluir(cls, produto):
-        if not isinstance(produto, Produto):
-            raise TypeError("O objeto precisa ser uma instância de Produto")
         super().excluir(produto)
 
     @classmethod
     def abrir(cls):
-        """ Reescrevendo `abrir()` para criar instâncias de `Produto`. """
         cls.lista_obj = []
         try:
             with open(cls.arquivo_json, "r") as arquivo:
@@ -137,8 +130,7 @@ class Produtos(ModeloJSON):
 
     @classmethod
     def salvar(cls):
-        """ Reescrevendo `salvar()` para converter os objetos `Produto` corretamente. """
-        with open(cls.arquivo_json, "w") as arquivo:
+       with open(cls.arquivo_json, "w") as arquivo:
             json.dump([obj.to_dict() for obj in cls.lista_obj], arquivo, indent=4)
 
 
