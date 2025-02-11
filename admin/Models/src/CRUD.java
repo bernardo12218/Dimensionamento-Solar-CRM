@@ -8,12 +8,12 @@ abstract class CRUD <T extends Inter>{
         abrir();
         int id = 0;
         for (T x : objetos){
-            if (x.getId() > id){
-                id = x.getId();
+            if (x.get_Id() > id){
+                id = x.get_Id();
             }
         }
 
-        obj.setId(id + 1);
+        obj.set_Id(id + 1);
         objetos.add(obj);
         salvar();
     }
@@ -26,7 +26,7 @@ abstract class CRUD <T extends Inter>{
     public T listarId(int id){
         abrir();
         for (T x : objetos){
-            if (x.getId() == id){
+            if (x.get_Id() == id){
                 return x;
             }
         }
@@ -34,7 +34,7 @@ abstract class CRUD <T extends Inter>{
     }
 
     public void atualizar(T obj){
-        T x = listarId(obj.getId());
+        T x = listarId(obj.get_Id());
         if (x != null){
             objetos.remove(x);
             objetos.add(obj);
@@ -43,7 +43,7 @@ abstract class CRUD <T extends Inter>{
     }
 
     public void excluir(T obj){
-        T x = listarId(obj.getId());
+        T x = listarId(obj.get_Id());
         if (x != null){
             objetos.remove(x);
             salvar();
