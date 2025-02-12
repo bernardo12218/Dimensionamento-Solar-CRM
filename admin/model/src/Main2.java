@@ -216,4 +216,78 @@ public class Main2 {
             }
         } while (operacao != 0);
     }
+
+    public static void KitsSolares(IdItem idItem, Quantidade quantidade, ValorKit valorKit, Scanner scanner){
+        int operacao;
+        do {
+            System.out.println("\n--- Menu de Kits Solares ---");
+            System.out.println("1. Adicionar kit");
+            System.out.println("2. Listar kits");
+            System.out.println("3. Atualizar kit");
+            System.out.println("4. Excluir kit");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
+            operacao = scanner.nextInt();
+            scanner.nextLine(); 
+
+
+
+            switch (operacao) {
+                case 1:
+                    System.out.print("\nDigite o ID do Item: ");
+                    int idProduto = scanner.nextInt();
+                    System.out.print("Digite a quantidade: ");
+                    int idKitSolar = scanner.nextInt();
+                    System.out.print("Digite o valor do Kit: ");
+                    int Quantidade = scanner.nextInt();
+
+                    itens.inserir(new Item(0, idItem, quantidade, valorKit)); // ID 0 será gerado automaticamente
+                    System.out.println("Kit adicionado com sucesso!");
+                    break;
+                case 2:
+                    // Listar itens
+                    System.out.println("\nLista de Kits Solares:");
+                    for (Item item : itens.listar()) {
+                        System.out.println(item);
+                    }
+                    break;
+                
+                case 3:
+                    System.out.print("\nDigite o ID do kit que deseja atualizar: ");
+                    int idAtualizar = scanner.nextInt();
+                    Item itemAtualizado = itens.listarId(idAtualizar);
+
+                    if (itemAtualizado != null) {
+                        System.out.print("Digite a nova quantidade: ");
+                        int novaQuantidade = scanner.nextInt();
+                        itemAtualizado.setquantidade(novaQuantidade);
+                        itens.atualizar(itemAtualizado);
+                        System.out.println("Kit atualizado com sucesso!");
+                    } else {
+                        System.out.println("Kit não encontrado.");
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("\nDigite o ID do kit que deseja excluir: ");
+                    int idExcluir = scanner.nextInt();
+                    Item itemParaExcluir = itens.listarId(idExcluir);
+
+                    if (itemParaExcluir != null) {
+                        itens.excluir(itemParaExcluir);
+                        System.out.println("Kit excluído com sucesso!");
+                    } else {
+                        System.out.println("Kit não encontrado.");
+                    }
+                    break;
+                
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
+            }
+        } while (operacao != 0);
+    }
 }
