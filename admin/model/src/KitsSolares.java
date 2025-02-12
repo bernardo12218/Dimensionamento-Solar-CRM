@@ -8,8 +8,9 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.List;
+import java.util.ArrayList;
 
 public class KitsSolares extends CRUD<KitSolar> {
 
@@ -18,7 +19,7 @@ public class KitsSolares extends CRUD<KitSolar> {
         try (FileWriter writer = new FileWriter("KitsSolares.json")) {
             Gson gson = new Gson();
             gson.toJson(objetos, writer);
-            System.out.println("Itens salvos em 'KitsSolares.json'.");
+            System.out.println("Kits solares salvos em 'KitsSolares.json'.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,15 +29,15 @@ public class KitsSolares extends CRUD<KitSolar> {
     public void abrir() {
         objetos.clear();
         try (FileReader reader = new FileReader("KitsSolares.json")) {
-            Type listType = new TypeToken<List<Item>>() {}.getType();
+            Type listType = new TypeToken<List<KitSolar>>() {}.getType();
             objetos = new Gson().fromJson(reader, listType);
             if (objetos == null) {
-                objetos = new ArrayList<>(); // Inicializa a lista se o arquivo estiver vazio
+                objetos = new ArrayList<>();
             }
-            System.out.println("Kits Solares carregados de 'KitsSolares.json'.");
+            System.out.println("Kits solares carregados de 'KitsSolares.json'.");
         } catch (FileNotFoundException e) {
-            objetos = new ArrayList<>(); // Se o arquivo não existir, cria uma lista vazia
-            System.out.println("Arquivo 'KitsSolares.json' não encontrado. Criando nova lista de kitssolares.");
+            objetos = new ArrayList<>();
+            System.out.println("Arquivo 'KitsSolares.json' não encontrado. Criando nova lista de kits solares.");
         } catch (IOException e) {
             e.printStackTrace();
         }
