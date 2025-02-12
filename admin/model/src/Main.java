@@ -18,6 +18,7 @@ public class Main {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
+            
             scanner.nextLine(); // Consumir a nova linha
 
             switch (opcao) {
