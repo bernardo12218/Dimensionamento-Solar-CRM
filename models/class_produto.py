@@ -72,16 +72,16 @@ class Produto:
     def __str__(self):
         return f" Id: {self.get_id()} - Tipo: {self.get_tipo()} - Valor: R${self.get_valor()} - Estoque: {self.get_estoque()} - Marca: {self.get_marca()} - Potencia: {self.get_potencia()} Watts"
 
-    def to_dict(self):
+    #def to_dict(self):
        
-        return {
-            "id": self.get_id(),
-            "tipo": self.get_tipo(),
-            "valor": self.get_valor(),
-            "estoque": self.get_estoque(),
-            "marca": self.get_marca(),
-            "potencia": self.get_potencia()
-        }
+    #    return {
+    #       "id": self.get_id(),
+    #        "tipo": self.get_tipo(),
+    #        "valor": self.get_valor(),
+    #        "estoque": self.get_estoque(),
+    #        "marca": self.get_marca(),
+    #        "potencia": self.get_potencia()
+     #   }
 
     @classmethod
     def from_dict(cls, data):
@@ -96,7 +96,7 @@ class Produto:
         )
 
 class Produtos(ModeloJSON):
-    arquivo_json = "produtos.json"
+    arquivo_json = "admin/model/Produtos.json"
 
     @classmethod
     def inserir(cls, produto):
@@ -134,12 +134,6 @@ class Produtos(ModeloJSON):
             json.dump([obj.to_dict() for obj in cls.lista_obj], arquivo, indent=4)
 
 
-objeto = Produto(0,"Módulos",1600.50,10,"JA SOLAR", 550)
-
-Produtos.inserir(objeto)
-Produtos.salvar()
-
-objeto = Produto(0,"Módulos",1600.50,10,"TRINA", 650)
-
-Produtos.inserir(objeto)
-Produtos.salvar()
+mostrar = Produtos.listar()
+for i in mostrar:
+    print(i)

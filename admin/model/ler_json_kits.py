@@ -13,4 +13,4 @@ for kit in dados:
     print("IDs dos Itens:", kit['idItens'])
     print("Quantidade:", kit['quantidade'])
     print("Valor do Kit: R$", kit['valorKit'])
-    print("-" * 30)  # separador entre kits
+    print("-" * 30)# separador entre kits
