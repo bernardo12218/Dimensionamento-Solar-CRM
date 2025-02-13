@@ -1,14 +1,16 @@
 from class_ModeloJSON import ModeloJSON, json
 
 class KitSolar:
-    def __init__(self,id,id_Item,valor):
+    def __init__(self,id,idItens,quantidade,valorKit):
         self.__id  = 0
-        self.__id_Item = 0
-        self.__Valor = 0.0
+        self.__idItens = []
+        self.__quantidade = 0
+        self.__valorKit = 0.0
 
         self.set_id(id)
-        self.set_id_Item(id_Item)
-        self.set_Valor(valor)
+        self.set_idItens(idItens)
+        self.set_Quantidade(quantidade)
+        self.set_valorKit(valorKit)
 
     def set_id(self,id):
         if ((type(id)  == int) and id >= 0):
@@ -16,16 +18,23 @@ class KitSolar:
         else:
             raise ValueError("Valor inválido, tente outro valor positivo")
 
-    def set_id_Item(self,id_Item):
-        if ((type(id_Item)  == int) and id_Item >= 0):
-            self.__id_Item = id_Item
+    def set_idItens(self,idItens):
+        if ((type(idItens)  == int) and idItens >= 0):
+            self.__idItens = (self.get_idItens()).append(idItens)
+        else:
+            raise ValueError("Valor inválido, tente outro valor positivo")
+        
+    
+    def set_Quantidade(self,quantidade):
+        if ((type(id)  == int) and id >= 0):
+            self.__quantidade = quantidade
         else:
             raise ValueError("Valor inválido, tente outro valor positivo")
 
     
-    def set_Valor(self,valor):
-        if ((type(valor)  == float) and valor > 0):
-            self.__Valor = valor
+    def set_valorKit(self,valorKit):
+        if ((type(valorKit)  == float) and valorKit > 0):
+            self.__valorKit = valorKit
         else:
             raise ValueError("Valor inválido, tente outro valor positivo")
         
@@ -33,35 +42,38 @@ class KitSolar:
     def get_id(self):
         return self.__id
     
-    def get_id_Item(self):
-        return self.__id_Item
+    def get_idItens(self):
+        return self.__idItens
 
     def get_Valor(self):
         return self.__Valor
-
+    
+    def get_Quantidade(self):
+        return self.__quantidade
     
     def __str__(self):
-        return f" Id: {self.get_id()} - id_Item: {self.get_id_Item()} - Valor: R${self.get_Valor()}"
+        return f" Id: {self.get_id()} - idItens: {self.get_idItens()} - Valor: R${self.get_Valor()}"
 
-    def to_dict(self):
+    # def to_dict(self):
        
-        return {
-            "id": self.get_id(),
-            "id_Item": self.get_id_Item(),
-            "Valor": self.get_Valor()
-         }
+    #     return {
+    #         "id": self.get_id(),
+    #         "idItens": self.get_idItens(),
+    #         "Valor": self.get_Valor()
+    #      }
 
     @classmethod
     def from_dict(cls, data):
         
         return cls(
             id=data["id"],
-            id_Item=data["id_Item"],
-            valor=data["Valor"]
+            idItens=data["idItens"],
+            quantidade=data["quantidade"],
+            valorKit=data["valorKit"]
             )
 
 class KitsSolar(ModeloJSON):
-    arquivo_json = "KitsSolar.json"
+    arquivo_json = "admin/model/KitsSolares.json"
 
     @classmethod
     def inserir(cls, kitSolar):
@@ -99,6 +111,10 @@ class KitsSolar(ModeloJSON):
             json.dump([obj.to_dict() for obj in cls.lista_obj], arquivo, indent=4)
 
 
-teste = KitSolar(0,1,50.2)
+# teste = KitSolar(0,1,50.2)
 
-KitsSolar.inserir(teste)
+# KitsSolar.inserir(teste)
+teste = KitsSolar.listar()
+
+for i in teste:
+    print(teste)

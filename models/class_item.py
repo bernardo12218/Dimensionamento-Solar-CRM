@@ -117,7 +117,7 @@ class Itens(ModeloJSON):
             json.dump([obj.to_dict() for obj in cls.lista_obj], arquivo, indent=4)
 
 
-objeto = Item(0,1,2,30)
+# objeto = Item(0,1,2,30)
 
 mostrar = Itens.listar()
 for i in mostrar:
