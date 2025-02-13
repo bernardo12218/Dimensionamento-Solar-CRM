@@ -111,3 +111,12 @@ class Clientes(ModeloJSON):
         with open(cls.arquivo_json, "w") as arquivo:
             json.dump([obj.to_dict() for obj in cls.lista_obj], arquivo, indent=4)
 
+
+nome = "Asaph Arruda"
+endereco = "Rua gameleira 361 - Nova Parnamirim"
+cidade = "Natal"
+telefone  = "(84) 98636-3165"
+
+novo_cliente = Cliente(0,nome,endereco,cidade,telefone)
+
+Clientes.inserir(novo_cliente)
