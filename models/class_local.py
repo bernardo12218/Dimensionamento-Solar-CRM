@@ -41,13 +41,13 @@ class Local:
     def __str__(self):
         return f" Id: {self.get_id()} - Cidade: {self.get_cidade()} - Irradiacao: {self.get_irradiacao()}"
 
-    def to_dict(self):
+    #def to_dict(self):
        
-        return {
-            "id": self.get_id(),
-            "cidade": self.get_cidade(),
-            "irradiacao": self.get_irradiacao()
-         }
+       # return {
+        #    "id": self.get_id(),
+        #    "cidade": self.get_cidade(),
+       #     "irradiacao": self.get_irradiacao()
+       #  }
 
     @classmethod
     def from_dict(cls, data):
@@ -59,7 +59,7 @@ class Local:
             )
 
 class Locais(ModeloJSON):
-    arquivo_json = "locais.json"
+    arquivo_json = "admin/model/Locais.json"
 
     @classmethod
     def inserir(cls, local):
@@ -96,5 +96,6 @@ class Locais(ModeloJSON):
        with open(cls.arquivo_json, "w") as arquivo:
             json.dump([obj.to_dict() for obj in cls.lista_obj], arquivo, indent=4)
         
-teste = Local(0,"Natal", 5.5525)
-Locais.inserir(teste)
+mostrar = Locais.listar()
+for i in mostrar:
+    print(i)
