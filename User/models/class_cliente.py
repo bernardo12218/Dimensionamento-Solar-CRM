@@ -1,4 +1,4 @@
-from class_ModeloJSON import ModeloJSON
+from User.models.class_ModeloJSON import ModeloJSON
 import json
 
 class Cliente:
@@ -73,7 +73,7 @@ class Cliente:
         )
 
 class Clientes(ModeloJSON):
-    arquivo_json = "clientes.json"
+    arquivo_json = "Data/clientes.json"
 
     @classmethod
     def inserir(cls, cliente):

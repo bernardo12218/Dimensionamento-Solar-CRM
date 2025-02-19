@@ -96,7 +96,7 @@ class Produto:
         )
 
 class Produtos(ModeloJSON):
-    arquivo_json = "admin/model/Produtos.json"
+    arquivo_json = "Data/Produtos.json"
 
     @classmethod
     def inserir(cls, produto):

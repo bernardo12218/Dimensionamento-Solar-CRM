@@ -78,7 +78,7 @@ class Item:
         )
 
 class Itens(ModeloJSON):
-    arquivo_json = "admin/model/Itens.json"
+    arquivo_json = "Data/Itens.json"
 
     @classmethod
     def inserir(cls, item):

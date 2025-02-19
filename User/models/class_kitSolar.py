@@ -68,7 +68,7 @@ class KitSolar:
 
 
 class KitsSolar(ModeloJSON):
-    arquivo_json = "admin/model/KitsSolares.json"
+    arquivo_json = "Data/KitsSolares.json"
 
     @classmethod
     def inserir(cls, kitSolar):

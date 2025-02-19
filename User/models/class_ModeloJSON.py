@@ -4,11 +4,8 @@ class ModeloJSON:
     lista_obj = []
     arquivo_json = "base.json" 
 
-    
-
     @classmethod
     def inserir(cls, obj):
-        
         cls.abrir()
         id = 0
         for x in cls.lista_obj:
@@ -16,10 +13,8 @@ class ModeloJSON:
                 id = x.get_id()
 
         obj.set_id(id + 1)
-
         cls.lista_obj.append(obj)
         cls.salvar()
-     
 
     @classmethod
     def listar(cls):

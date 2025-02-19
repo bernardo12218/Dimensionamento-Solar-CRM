@@ -5,5 +5,12 @@
         "endereco": "Rua gameleira 361 - Nova Parnamirim",
         "cidade": "Natal",
         "telefone": "(84) 98636-3165"
+    },
+    {
+        "id": 2,
+        "nome": "Asaph Arruda",
+        "endereco": "Rua gameleira 361 - Nova Parnamirim",
+        "cidade": "Natal",
+        "telefone": "(84) 98636-3165"
     }
 ]

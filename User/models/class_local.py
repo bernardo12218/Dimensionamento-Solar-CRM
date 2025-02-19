@@ -59,7 +59,7 @@ class Local:
             )
 
 class Locais(ModeloJSON):
-    arquivo_json = "admin/model/Locais.json"
+    arquivo_json = "Data/Locais.json"
 
     @classmethod
     def inserir(cls, local):
