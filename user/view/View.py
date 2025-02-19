@@ -44,7 +44,7 @@ class View:
 
     @staticmethod
     def listar_Cliente():
-        clientes =  Clientes.listar()
+        return Clientes.listar()
        
     
     @staticmethod
