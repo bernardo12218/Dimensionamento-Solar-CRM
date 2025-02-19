@@ -1,4 +1,4 @@
-package admin.Models.src;
+// package admin.Models.src;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -15,7 +15,7 @@ public class Locais extends CRUD<Local> {
 
     @Override
     public void salvar() {
-        try (FileWriter writer = new FileWriter("Locais.json")) {
+        try (FileWriter writer = new FileWriter("./Data/Locais.json")) {
             Gson gson = new Gson();
             gson.toJson(objetos, writer);
             System.out.println("Itens salvos em 'Locais.json'.");
@@ -27,7 +27,7 @@ public class Locais extends CRUD<Local> {
     @Override
     public void abrir() {
         objetos.clear();
-        try (FileReader reader = new FileReader("Locais.json")) {
+        try (FileReader reader = new FileReader("./Data/Locais.json")) {
             Type listType = new TypeToken<List<Local>>() {}.getType();
             objetos = new Gson().fromJson(reader, listType);
             if (objetos == null) {

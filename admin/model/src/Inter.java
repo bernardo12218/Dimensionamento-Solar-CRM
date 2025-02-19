@@ -1,4 +1,4 @@
-package admin.Models.src;
+// package admin.Models.src;
 
 public interface Inter {
     int getId();

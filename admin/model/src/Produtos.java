@@ -1,4 +1,4 @@
-package admin.Models.src;
+// package admin.Models.src;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -15,7 +15,7 @@ public class Produtos extends CRUD<Produto> {
 
     @Override
     public void salvar() {
-        try (FileWriter writer = new FileWriter("Produtos.json")) {
+        try (FileWriter writer = new FileWriter("./Data/Produtos.json")) {
             Gson gson = new Gson();
             gson.toJson(objetos, writer);
             System.out.println("Produtos salvos em 'Produtos.json'.");
@@ -27,7 +27,7 @@ public class Produtos extends CRUD<Produto> {
     @Override
     public void abrir() {
         objetos.clear();
-        try (FileReader reader = new FileReader("Produtos.json")) {
+        try (FileReader reader = new FileReader("./Data/Produtos.json")) {
             Type listType = new TypeToken<List<Produto>>() {}.getType();
             objetos = new Gson().fromJson(reader, listType);
             if (objetos == null) {

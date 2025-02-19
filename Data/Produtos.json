@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "tipo": "plas",
+        "valor": 1.0,
+        "estoque": 20,
+        "marca": "asdasd",
+        "potencia": 50
+    },
+    {
+        "id": 2,
+        "tipo": "Placa Solar",
+        "valor": 10.0,
+        "estoque": 20,
+        "marca": "20",
+        "potencia": 30
+    }
+]

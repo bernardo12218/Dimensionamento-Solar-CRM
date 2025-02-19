@@ -1,4 +1,4 @@
-package admin.Models.src;
+// package admin.Models.src;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -16,7 +16,7 @@ public class KitsSolares extends CRUD<KitSolar> {
 
     @Override
     public void salvar() {
-        try (FileWriter writer = new FileWriter("KitsSolares.json")) {
+        try (FileWriter writer = new FileWriter("./Data/KitsSolares.json")) {
             Gson gson = new Gson();
             gson.toJson(objetos, writer);
             System.out.println("Kits solares salvos em 'KitsSolares.json'.");
@@ -28,7 +28,7 @@ public class KitsSolares extends CRUD<KitSolar> {
     @Override
     public void abrir() {
         objetos.clear();
-        try (FileReader reader = new FileReader("KitsSolares.json")) {
+        try (FileReader reader = new FileReader("./Data/KitsSolares.json")) {
             Type listType = new TypeToken<List<KitSolar>>() {}.getType();
             objetos = new Gson().fromJson(reader, listType);
             if (objetos == null) {

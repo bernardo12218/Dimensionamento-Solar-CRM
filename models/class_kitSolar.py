@@ -1,76 +1,71 @@
-from class_ModeloJSON import ModeloJSON, json
+from class_ModeloJSON import ModeloJSON
+import json
 
 class KitSolar:
-    def __init__(self,id,idItens,quantidade,valorKit):
-        self.__id  = 0
-        self.__idItens = []
-        self.__quantidade = 0
-        self.__valorKit = 0.0
+    def __init__(self, id, idItens, quantidade, valorKit):
+        self.__id = id
+        self.__idItens = idItens
+        self.__quantidade = quantidade
+        self.__valorKit = valorKit
 
-        self.set_id(id)
-        self.set_idItens(idItens)
-        self.set_Quantidade(quantidade)
-        self.set_valorKit(valorKit)
-
-    def set_id(self,id):
-        if ((type(id)  == int) and id >= 0):
+    # Métodos sets
+    def set_id(self, id):
+        if id >= 0:
             self.__id = id
         else:
-            raise ValueError("Valor inválido, tente outro valor positivo")
+            raise ValueError("ID inválido, tente outro valor positivo")
 
-    def set_idItens(self,idItens):
-        if ((type(idItens)  == int) and idItens >= 0):
-            self.__idItens = (self.get_idItens()).append(idItens)
+    def set_idItens(self, idItens):
+        if all(type(i) == int for i in idItens):
+            self.__idItens = idItens
         else:
-            raise ValueError("Valor inválido, tente outro valor positivo")
-        
-    
-    def set_Quantidade(self,quantidade):
-        if ((type(id)  == int) and id >= 0):
+            raise ValueError("idItens deve ser uma lista de inteiros")
+
+    def set_quantidade(self, quantidade):
+        if quantidade >= 0:
             self.__quantidade = quantidade
         else:
-            raise ValueError("Valor inválido, tente outro valor positivo")
+            raise ValueError("Quantidade inválida, tente outro valor positivo")
 
-    
-    def set_valorKit(self,valorKit):
-        if ((type(valorKit)  == float) and valorKit > 0):
+    def set_valorKit(self, valorKit):
+        if valorKit > 0:
             self.__valorKit = valorKit
         else:
-            raise ValueError("Valor inválido, tente outro valor positivo")
-        
-    #metodos gets
+            raise ValueError("valorKit inválido, tente outro valorKit positivo")
+
+    # Métodos gets
     def get_id(self):
         return self.__id
-    
+
     def get_idItens(self):
         return self.__idItens
 
-    def get_Valor(self):
-        return self.__Valor
-    
-    def get_Quantidade(self):
+    def get_quantidade(self):
         return self.__quantidade
-    
-    def __str__(self):
-        return f" Id: {self.get_id()} - idItens: {self.get_idItens()} - Valor: R${self.get_Valor()}"
 
-    # def to_dict(self):
-       
-    #     return {
-    #         "id": self.get_id(),
-    #         "idItens": self.get_idItens(),
-    #         "Valor": self.get_Valor()
-    #      }
+    def get_valorKit(self):
+        return self.__valorKit
+
+    def __str__(self):
+        return f"Id: {self.get_id()} - idItens: {self.get_idItens()} - quantidade: {self.get_quantidade()} - valorKit: R${self.get_valorKit()}"
+
+    def to_dict(self):
+        return {
+            "id": self.get_id(),
+            "idItens": self.get_idItens(),
+            "quantidade": self.get_quantidade(),
+            "valorKit": self.get_valorKit()
+        }
 
     @classmethod
     def from_dict(cls, data):
-        
         return cls(
             id=data["id"],
             idItens=data["idItens"],
             quantidade=data["quantidade"],
             valorKit=data["valorKit"]
-            )
+        )
+
 
 class KitsSolar(ModeloJSON):
     arquivo_json = "admin/model/KitsSolares.json"
@@ -107,14 +102,12 @@ class KitsSolar(ModeloJSON):
 
     @classmethod
     def salvar(cls):
-       with open(cls.arquivo_json, "w") as arquivo:
+        with open(cls.arquivo_json, "w") as arquivo:
             json.dump([obj.to_dict() for obj in cls.lista_obj], arquivo, indent=4)
 
 
-# teste = KitSolar(0,1,50.2)
-
-# KitsSolar.inserir(teste)
-teste = KitsSolar.listar()
-
-for i in teste:
-    print(teste)
+# Exemplo de uso
+KitsSolar.abrir()
+mostrar = KitsSolar.listar()
+for i in mostrar:
+    print(i)
