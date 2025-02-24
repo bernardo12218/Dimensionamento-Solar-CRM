@@ -1,4 +1,4 @@
-from user.models import Cliente, Clientes, Usuario, Usuarios
+from user.models import Cliente, Clientes, Usuario, Usuarios, Atendimento, Atendimentos
 
 
 class View:
@@ -40,7 +40,14 @@ class View:
     @staticmethod
     def inserir_Cliente(nome, endereco, cidade, telefone):
         novo_Cliente = Cliente(0, nome, endereco, cidade, telefone)
+        
         Clientes.inserir(novo_Cliente)
+        clientes =  Clientes.listar()
+        for cliente in clientes:
+            if cliente.get_nome() == nome and cliente.get_endereco() ==  endereco and cliente.get_cidade() == cidade and cliente.get_telefone() == telefone:
+                novo_Atendimento = Atendimento(0,cliente.get_id(),0,0,0,0,0)
+                Atendimentos.inserir(novo_Atendimento)
+
 
     @staticmethod
     def listar_Cliente():
@@ -56,4 +63,9 @@ class View:
     def remover_Cliente(id):
         novo_Cliente = Cliente(id, "", "", "", "")
         Clientes.excluir(novo_Cliente)
+
+    # =============================================
+    @staticmethod
+    def listar_Atendimento():
+        return Atendimentos.listar()
 

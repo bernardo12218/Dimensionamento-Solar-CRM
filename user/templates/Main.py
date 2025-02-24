@@ -1,6 +1,7 @@
 from user.view.View import View
 from user.templates.ui_Login import UI_Login
 from user.templates.ui_Clientes import UI_Clientes
+from user.templates.ui_Status import UI_Status
 
 import streamlit as st
 
@@ -27,6 +28,8 @@ class Main_UI:
         if st.session_state.page == 'home':
             st.write("Página Inicial")
             Main_UI.login()
+            # UI_Status.main()
+
 
         elif st.session_state.page == 'usuario':
             Main_UI.Usuario_Tela()

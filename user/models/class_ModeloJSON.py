@@ -35,14 +35,14 @@ class ModeloJSON:
     @classmethod
     def listar_id(cls, id):
         cls.abrir()
-        for x in cls.lista_obj:
-            if x.id == id:
-                return x
+        for obj in cls.lista_obj:
+            if obj.get_id() == id:
+                return obj
         return None
 
     @classmethod
     def atualizar(cls, obj):
-        existente = cls.listar_id(obj.id)
+        existente = cls.listar_id(obj.get_id())
         if existente:
             cls.lista_obj.remove(existente)
             cls.lista_obj.append(obj)
@@ -50,7 +50,7 @@ class ModeloJSON:
 
     @classmethod
     def excluir(cls, obj):
-        existente = cls.listar_id(obj.id)
+        existente = cls.listar_id(obj.get_id())
         if existente:
             cls.lista_obj.remove(existente)
             cls.salvar()
@@ -73,7 +73,7 @@ class ModeloJSON:
 
 
 class Atendimentos(ModeloJSON):
-    arquivo_json = "clientes.json"
+    arquivo_json = "Data/Atendimentos.json"
 
     @classmethod
     def inserir(cls, atendimento):
