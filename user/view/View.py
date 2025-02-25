@@ -1,4 +1,4 @@
-from user.models import Cliente, Clientes, Usuario, Usuarios, Atendimento, Atendimentos
+from user.models import Cliente, Clientes, Usuario, Usuarios, Atendimento, Atendimentos, Local, Locais, KitSolar, KitsSolar, Item, Itens, Produto, Produtos
 
 
 class View:
@@ -76,4 +76,20 @@ class View:
     @staticmethod
     def listar_Atendimento():
         return Atendimentos.listar()
+    
+    @staticmethod
+    def listar_Local():
+        return Locais.listar()
+    
+    @staticmethod
+    def listar_KitSolar():
+        return KitsSolar.listar()
+    
+    @staticmethod
+    def listar_Item():
+        return Itens.listar()
+    
+    @staticmethod
+    def listar_Produto():
+        return Produtos.listar()
 

@@ -61,5 +61,41 @@
         "Preco_total": 0,
         "id_Local": 0,
         "Status": 0
+    },
+    {
+        "id": 9,
+        "id_Cliente": 9,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 10,
+        "id_Cliente": 10,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 11,
+        "id_Cliente": 11,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 12,
+        "id_Cliente": 12,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
     }
 ]

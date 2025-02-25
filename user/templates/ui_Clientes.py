@@ -7,8 +7,6 @@ import re  # Importação para validação de regex
 
 class UI_Clientes():
     def main():
-        if st.session_state["Dimensionar"] == True:
-            UI_Clientes.Dimensionar()
         tab1, tab2, tab3, tab4 = st.tabs(["Listar", "Adicionar", "Atualizar", "Excluir"])
 
 
@@ -58,7 +56,7 @@ class UI_Clientes():
        
         })
 
-        
+             
             st.write("Tabela de Atendimentos")
             st.table(df)
 
@@ -71,7 +69,7 @@ class UI_Clientes():
         telefone = st.text_input("Informe o telefone:")
 
         if "cliente_cadastrado" not in st.session_state:
-            st.session_state["cliente_cadastrado"] = False  # Inicializa o estado
+            st.session_state["cliente_cadastrado"] = False 
 
         def validar_nome(nome):
             return len(nome) >= 3
@@ -82,49 +80,42 @@ class UI_Clientes():
         def validar_telefone(telefone):
             return bool(re.fullmatch(r"\d{8,15}", telefone))
 
-        col1, col2 = st.columns([1, 1])  # Cria duas colunas iguais
+        
+        if st.button("Adicionar Cliente"):
+            if not nome or not telefone or not cidade or not endereco:
+                st.warning("Preencha todos os campos!")
+                return None
 
-        with col1:
-            if st.button("Adicionar Cliente"):
-                if not nome or not telefone or not cidade or not endereco:
-                    st.warning("Preencha todos os campos!")
+            if not validar_nome(nome):
+                st.warning("Nome inválido! Use no mínimo 3 caracteres.")
+                return None
+
+            if not validar_endereco(endereco):
+                st.warning("Endereço inválido! Use no mínimo 6 caracteres.")
+                return None
+
+            if not validar_nome(cidade):
+                st.warning("Cidade inválida! Use no mínimo 3 caracteres.")
+                return None
+
+            if not validar_telefone(telefone):
+                st.warning("Telefone inválido! Use apenas números e entre 8 e 15 dígitos.")
+                return None
+
+            clientes = View.listar_Cliente()
+            for cliente in clientes:
+                if cliente.get_nome() == nome and cliente.get_telefone() == telefone:
+                    st.warning("Cliente já existente.")
                     return None
 
-                if not validar_nome(nome):
-                    st.warning("Nome inválido! Use no mínimo 3 caracteres.")
-                    return None
+            View.inserir_Cliente(nome, endereco, cidade, telefone)
+            st.success("Cliente cadastrado com sucesso!")
+            st.rerun()
 
-                if not validar_endereco(endereco):
-                    st.warning("Endereço inválido! Use no mínimo 6 caracteres.")
-                    return None
+            
 
-                if not validar_nome(cidade):
-                    st.warning("Cidade inválida! Use no mínimo 3 caracteres.")
-                    return None
 
-                if not validar_telefone(telefone):
-                    st.warning("Telefone inválido! Use apenas números e entre 8 e 15 dígitos.")
-                    return None
-
-                clientes = View.listar_Cliente()
-                for cliente in clientes:
-                    if cliente.get_nome() == nome and cliente.get_telefone() == telefone:
-                        st.warning("Cliente já existente.")
-                        return None
-
-                View.inserir_Cliente(nome, endereco, cidade, telefone)
-                st.success("Cliente cadastrado com sucesso!")
-
-                # Ativa o botão "Dimensionar"
-                st.session_state["cliente_cadastrado"] = True
-                st.rerun()
-
-        with col2:
-            if st.session_state["cliente_cadastrado"]:
-                if st.button("Dimensionar"):
-                    st.session_state["Dimensionar"] = True
-                    st.info("Aqui você pode implementar a funcionalidade de dimensionamento.")
-                    return UI_Clientes.main()
+        
 
     def Atualizar():
         st.header("Atualizar Cliente!")
