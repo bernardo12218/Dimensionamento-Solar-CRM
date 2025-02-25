@@ -63,6 +63,14 @@ class View:
     def remover_Cliente(id):
         novo_Cliente = Cliente(id, "", "", "", "")
         Clientes.excluir(novo_Cliente)
+        # id, id_Cliente, potencia, id_Kit_Solar, id_Local, Status, Preco_total
+        atendimentos = View.listar_Atendimento()
+        print(atendimentos)
+        for atendimento in atendimentos:
+            if id == atendimento.get_id_Cliente():
+                # print(f"id-> {atendimento.get_id()} id_Cliente -> {atendimento.get_id_Cliente()}")
+                novo_Atendimento = Atendimento(atendimento.get_id(),0,0,0,0,0,0)
+                Atendimentos.excluir(novo_Atendimento)
 
     # =============================================
     @staticmethod
