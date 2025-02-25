@@ -15,9 +15,9 @@ class Atendimento:
         self.set_id_Cliente(id_Cliente)
         self.set_potencia(potencia)
         self.set_id_Kit_Solar(id_Kit_Solar)
-        self.set_Preco_total(Preco_total)
         self.set_id_Local(id_Local)
         self.set_Status(Status)
+        self.set_Preco_total(Preco_total)
 
     def set_id(self, id):
         if type(id) == int and id >= 0:
@@ -32,10 +32,9 @@ class Atendimento:
             raise ValueError("Valor inválido, tente outro valor")
 
     def set_potencia(self, potencia):
-        if type(potencia) == int and potencia >= 0:
-            self.__potencia = potencia
-        else:
-            raise ValueError("Valor inválido, tente outro valor")
+    
+        self.__potencia = potencia
+        
 
     def set_id_Kit_Solar(self, id_Kit_Solar):
         if type(id_Kit_Solar) == int and id_Kit_Solar >= 0:
@@ -44,10 +43,8 @@ class Atendimento:
             raise ValueError("Valor inválido, tente outro valor")
 
     def set_Preco_total(self, Preco_total):
-        if type(Preco_total) == int and Preco_total >= 0:
-            self.__Preco_total = Preco_total
-        else:
-            raise ValueError("Valor inválido, tente outro valor")
+        self.__Preco_total = Preco_total
+        
 
 
     def set_id_Local(self, id_Local):

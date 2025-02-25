@@ -1,1 +1,20 @@
-[{"id":1,"idItens":[1,2],"quantidade":10,"valorKit":2500.0}]
+[
+    {
+        "id": 1,
+        "idItens": [
+            1,
+            3
+        ],
+        "quantidade": 10,
+        "valorKit": 12000.0
+    },
+    {
+        "id": 2,
+        "idItens": [
+            5,
+            4
+        ],
+        "quantidade": 10,
+        "valorKit": 15000.0
+    }
+]

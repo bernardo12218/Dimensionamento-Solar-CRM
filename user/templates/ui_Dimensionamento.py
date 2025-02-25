@@ -31,6 +31,7 @@ class UI_Dimensionamento():
                 if st.button("Dimensionar"):
                     st.session_state.page1 = 'dimensionar'
                     st.session_state.cliente = op
+                    st.session_state.cliente_id = op.get_id()
                     st.rerun()
 
     @staticmethod
@@ -129,36 +130,100 @@ class UI_Dimensionamento():
             if local.get_irradiacao() > 0:
                 potencia_kwp = consumo_final / (local.get_irradiacao() * 30 * 0.80)
                 st.write(f"Potência necessária do sistema fotovoltaico: {potencia_kwp:.2f} kWp")
-                kits = View.listar_KitSolar()
-                itens = View.listar_Item()
-                produtos = View.listar_Produto()
+                
+                kits_solares = UI_Dimensionamento.listar_kits(potencia_kwp)
+
+                opcoes_kits = [f"{kit['descricao']}" for kit in kits_solares]
+
+                kit_selecionado = st.selectbox("Escolha um kit solar:", opcoes_kits)
+
+                kit_detalhes = next((kit for kit in kits_solares if kit["descricao"] == kit_selecionado), None)
+
+                if kit_detalhes:
+                    st.write("### Detalhes do Kit Selecionado")
+                    st.write(f"**Descrição:** {kit_detalhes['descricao']}")
+                    st.write("**Componentes:**")
+                    for componente in kit_detalhes["componentes"]:
+                        st.write(f"- {componente}")
+                    if st.button("Selecionar Kit"):
+                        st.session_state.kit_selecionado = kit_detalhes  
+                        st.session_state.preco_final = kit_detalhes["preco"]  
+
+                    if "kit_selecionado" in st.session_state:
+                        componentes_formatados = " , ".join(st.session_state.kit_selecionado["componentes"])
+                        preco_base = st.session_state.kit_selecionado["preco"]  
+                        
+                        st.write(f"### Kit Solar: {componentes_formatados} - R$ {preco_base:.2f}")
+                        preco_Final = st.session_state.kit_selecionado["preco"]
+                        preco_Final = st.number_input(
+                                "Preço Final R$ ",
+                                min_value=st.session_state.kit_selecionado["preco"], 
+                                value=st.session_state.preco_final,
+                                format="%.2f"
+                                )
+                                
+                        adicao_preco = st.number_input(
+                            "Adição no Preço Final (%)",
+                            min_value=-100,
+                            value=0,
+                            format="%d",
+                            key="adicao_preco_input"
+                        )
+
+                        
+                        preco_final_calculado = preco_Final * (1 + adicao_preco / 100)
+
+                        
+                        st.write(f"**Preço Final Atualizado:** R$ {preco_final_calculado:.2f}")
+                        
+                            
+                       
+                       
+
+                        if st.button("Terminar Dimensionamento"):
+                            id_Kit_Selecionado = (kit_detalhes["id"])
+                            potencia_Kit = (kit_detalhes["potencia_kit"])
+                            id_Local = local.get_id()
+                            # st.write(f"{type(potencia_Kit)}")
+                            atendimentos = View.listar_Atendimento()
+                            for atendimento in atendimentos:
+                                if atendimento.get_id_Cliente() == st.session_state.cliente_id:
+                                    # st.write(f"Atedimento id-> {atendimento.get_id()} - id_Cliente -> {st.session_state.cliente_id} - Potencia -> {potencia_Kit}, id_kit: {id_Kit_Selecionado} Local {id_Local}, status -> 1 - preco {preco_final_calculado}")
+
+                                    View.atualizar_Atendimento(atendimento.get_id(), st.session_state.cliente_id, potencia_Kit, id_Kit_Selecionado, id_Local, 1, preco_final_calculado)
+                                    st.success("Orçamento criado com sucesso!")
+
 
                 
-                kitsolar = []
-                componentes_kitsolar = []
-
-                    # for item in itens:
-                for kit in kits:
-                    tamanho_kit = len(kit.get_idItens())
-                    for item in itens:
-                        for i in range(tamanho_kit):
-                            if (kit.get_idItens()[i] == item.get_id()):
-                                for produto in produtos:
-                                    if item.get_id_Produto() == produto.get_id():
-
-                                        componentes_kitsolar.append(f" Tipo: {produto.get_tipo()} de {produto.get_potencia()}W - Quantidade: {item.get_quantidade()}")
                 
-                
-                st.write(componentes_kitsolar)
-
-                
-
-
-
-
-            else:
-                st.write("A irradiância do local não é válida. Não é possível calcular a potência do sistema.")
-        else:
-            st.write("Nenhum mês foi preenchido.")
-
-
+    @staticmethod
+    def listar_kits(potencia_kwp):
+        kits = View.listar_KitSolar()
+        itens = View.listar_Item()
+        produtos = View.listar_Produto()
+        
+        kits_formatados = []
+        
+        for kit in kits:
+            componentes_kitsolar = []
+            potencia_kit = 0
+            valor_kit = kit.get_valorKit()
+            
+            for item in itens:
+                if item.get_id() in kit.get_idItens():
+                    for produto in produtos:
+                        if item.get_id_Produto() == produto.get_id():
+                            potencia_kit += (item.get_quantidade() * produto.get_potencia()) / 1000  
+                            componentes_kitsolar.append(f"{item.get_quantidade()} x {produto.get_tipo()} {produto.get_potencia()}Wp - {produto.get_marca()}")
+            
+            if componentes_kitsolar:
+                kits_formatados.append({
+                    "id": kit.get_id(),
+                    "preco": kit.get_valorKit(),
+                    "descricao": f"Gerador FV {potencia_kit:.2f} kWp - R${valor_kit:.2f}",
+                    "componentes": componentes_kitsolar,
+                    "potencia_kit": potencia_kit,
+                    "valor_kit": valor_kit
+                })
+        
+        return kits_formatados

@@ -1,18 +1,34 @@
 [
     {
         "id": 1,
-        "tipo": "plas",
+        "tipo": "Módulo Fotovoltaico",
         "valor": 1.0,
         "estoque": 20,
-        "marca": "asdasd",
-        "potencia": 50
+        "marca": "JA",
+        "potencia": 630
     },
     {
         "id": 2,
-        "tipo": "Placa Solar",
+        "tipo": "Módulo Fotovoltaico",
         "valor": 10.0,
         "estoque": 20,
-        "marca": "20",
-        "potencia": 30
+        "marca": "DAH",
+        "potencia": 550
+    },
+    {
+        "id": 3,
+        "tipo": "Módulo Fotovoltaico",
+        "valor": 10.0,
+        "estoque": 30,
+        "marca": "Trina Solar",
+        "potencia": 545
+    },
+    {
+        "id": 4,
+        "tipo": "Inversor String",
+        "valor": 10.0,
+        "estoque": 10,
+        "marca": "Sungrow",
+        "potencia": 3000
     }
 ]
