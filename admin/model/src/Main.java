@@ -5,7 +5,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    public static int login() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o email: ");
+        String email = scanner.nextLine();
+        System.out.print("Digite a senha: ");
+        String senha = scanner.nextLine();
+
+        while (!email.equals("admin@gmail.com") || !senha.equals("1234")) {
+            System.out.println("Login Inválido!");
+            System.out.print("Digite o email: ");
+            email = scanner.nextLine();
+            System.out.print("Digite a senha: ");
+            senha = scanner.nextLine();
+        }
+
+        return 0;
+    }
+    
+
     public static void main(String[] args) {
+        
+        int teste;
+        do {
+            teste = login();
+            
+        } while (teste != 0);
+
         Produtos produtos = new Produtos(); 
         Itens itens = new Itens();
         Locais locais = new Locais();
@@ -21,7 +48,8 @@ public class Main {
             System.out.println("2. Gerenciar Itens");
             System.out.println("3. Gerenciar Locais");
             System.out.println("4. Montar Kits");
-            System.out.println("0. Sair");
+            System.out.println("0. Encerrar");
+            System.out.println("-1. Logout");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine(); 
@@ -47,6 +75,15 @@ public class Main {
                     System.out.println("Saindo...");
                     break;
 
+
+                case -1:
+                
+                    do {
+                        teste = login();
+                        
+                    } while (teste != 0);
+                    opcao = 1;
+                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
                     break;

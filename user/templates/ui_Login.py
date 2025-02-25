@@ -16,7 +16,7 @@ class UI_Login:
     
         resultado = View.login(email,senha)
            
-        if st.button("Entar"):
+        if st.button("Entrar"):
             if email and senha:
                 if resultado is None:
                     st.error("Email ou senha invalidos")

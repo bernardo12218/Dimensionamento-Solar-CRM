@@ -27,7 +27,7 @@ class Atendimento:
 
     def set_id_Cliente(self, id_Cliente):
         if type(id_Cliente) == int and id_Cliente >= 0:
-            self.__id = id_Cliente
+            self.__id_Cliente = id_Cliente
         else:
             raise ValueError("Valor inválido, tente outro valor")
 
@@ -87,7 +87,9 @@ class Atendimento:
 
     def get_Status(self):
         return self.__Status
-
+    
+    def __str__(self):
+        return f"Id: {self.get_id()} -id_Cliente: {self.get_id_Cliente()} potencia: {self.get_potencia()} - id_Kit_Solar: {self.get_id_Kit_Solar()} - Preço Total: R${self.get_Preco_total()} - Id_Local: {self.get_id_Local()} - Status: {self.get_Status()}"
 
     def to_dict(self):
        

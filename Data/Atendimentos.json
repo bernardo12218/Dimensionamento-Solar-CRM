@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "id_Cliente": 1,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 2,
+        "id_Cliente": 2,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 4,
+        "id_Cliente": 4,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 5,
+        "id_Cliente": 5,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 6,
+        "id_Cliente": 6,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 7,
+        "id_Cliente": 7,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 8,
+        "id_Cliente": 8,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 9,
+        "id_Cliente": 9,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 10,
+        "id_Cliente": 10,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 11,
+        "id_Cliente": 11,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    },
+    {
+        "id": 12,
+        "id_Cliente": 12,
+        "potencia": 0,
+        "id_Kit_Solar": 0,
+        "Preco_total": 0,
+        "id_Local": 0,
+        "Status": 0
+    }
+]
