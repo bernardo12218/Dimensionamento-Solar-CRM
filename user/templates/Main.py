@@ -28,8 +28,8 @@ class Main_UI:
         
         if st.session_state.page == 'home':
             st.write("Página Inicial")
-            # Main_UI.login()
-            UI_Dimensionamento.main()
+            Main_UI.login()
+            # UI_Dimensionamento.main()
             # UI_Status.main()
 
 
@@ -42,9 +42,13 @@ class Main_UI:
         st.session_state.page = pagina
 
     def Usuario_Tela():
-        op = st.sidebar.selectbox("Menu", ["Cliente", "Orçamento", "Fechar Pedido", "Ver Meus Pedidos", "Sair"])
+        op = st.sidebar.selectbox("Menu", ["CRM","Cliente", "Orçamento", "Fechar Pedido", "Ver Meus Pedidos", "Sair"])
+        if op == "CRM":
+                UI_Status.main()
         if op == "Cliente":
                 UI_Clientes.main()
+        if op == "Orçamento":
+                UI_Dimensionamento.main()
         if op == "Sair":
                 st.session_state.page = 'home'
                 st.rerun()

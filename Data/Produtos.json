@@ -1,18 +1,1 @@
-[
-    {
-        "id": 1,
-        "tipo": "plas",
-        "valor": 1.0,
-        "estoque": 20,
-        "marca": "asdasd",
-        "potencia": 50
-    },
-    {
-        "id": 2,
-        "tipo": "Placa Solar",
-        "valor": 10.0,
-        "estoque": 20,
-        "marca": "20",
-        "potencia": 30
-    }
-]
+[{"id":1,"tipo":"Modulo Fotovoltaico","valor":600.0,"estoque":50,"marca":"Trina","potencia":550},{"id":2,"tipo":"Inversor Solar","valor":1000.0,"estoque":20,"marca":"Growatt","potencia":3000},{"id":3,"tipo":"Modulo Fotovoltaico","valor":400.0,"estoque":20,"marca":"JA SOLAR","potencia":530},{"id":4,"tipo":"Inversor Solar","valor":800.0,"estoque":6,"marca":"Sungrow","potencia":1500}]

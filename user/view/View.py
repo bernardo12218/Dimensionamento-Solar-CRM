@@ -32,7 +32,9 @@ class View:
         usarios = Usuarios.listar()
         for usuario in usarios:
             if "empresa@gmail.com" == email and "1234" == senha:
+                print
                 return "Usuario"
+
                 
            
     # =========== Fim-Verificar_Login ================
@@ -76,6 +78,11 @@ class View:
     @staticmethod
     def listar_Atendimento():
         return Atendimentos.listar()
+
+    @staticmethod
+    def atualizar_Atendimento(id, id_Cliente, potencia, id_Kit_Solar, id_Local, Status, Preco_total):
+        novo_Atendimento = Atendimento(id, id_Cliente, potencia, id_Kit_Solar, id_Local, Status, Preco_total)
+        Atendimentos.atualizar(novo_Atendimento)
     
     @staticmethod
     def listar_Local():
