@@ -32,7 +32,9 @@ class View:
         usarios = Usuarios.listar()
         for usuario in usarios:
             if "empresa@gmail.com" == email and "1234" == senha:
+                print
                 return "Usuario"
+
                 
            
     # =========== Fim-Verificar_Login ================

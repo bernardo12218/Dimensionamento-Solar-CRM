@@ -1,11 +1,11 @@
 [
     {
-        "id": 1,
-        "id_Cliente": 1,
-        "potencia": 16.08,
+        "id": 3,
+        "id_Cliente": 3,
+        "potencia": 12.45,
         "id_Kit_Solar": 2,
-        "Preco_total": 210000.0,
-        "id_Local": 1,
-        "Status": 1
+        "Preco_total": 23112.0,
+        "id_Local": 2,
+        "Status": 2
     }
 ]
